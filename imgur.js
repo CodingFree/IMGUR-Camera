@@ -12,13 +12,15 @@
          * @memberof Screenshot.prototype
          */
         start: function () {
-            console.log("IMGUR Running");
+            console.log("IMGUR Camera Running");
             if (this._started) {
                 throw 'Instance should not be start()\'ed twice.';
             }
+
             this._started = true;
 
-            window.addEventListener('mozChromeEvent', this);
+            window.addEventListener('newimage', this); //https://github.com/mozilla-b2g/gaia/blob/0cc109495bf06060e66f993255ab8a23fcfe347b/apps/camera/js/lib/camera/camera.js#L782
+            //window.addEventListener('mozChromeEvent', this);
         },
 
         /**
@@ -43,7 +45,7 @@
             switch (evt.type) {
                 case 'mozChromeEvent':
                     if (evt.detail.type === 'take-screenshot-success') {
-                        console.log("There is an screenshot available.");
+                        console.log("There is a picture available.");
                         if(navigator.onLine){
                             this.handleTakeScreenshotSuccess(evt.detail.file);
                         }
@@ -74,7 +76,7 @@
                   var data = JSON.parse(xhr.responseText).data; 
                   var imgurURL = data.link; 
                   console.log(imgurURL);
-                    self.notify('Screenshot uploaded: ', imgurURL, null, true);
+                    self.notify('Picture uploaded: ', imgurURL, null, true);
                     //const gClipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
                     //gClipboardHelper.copyString(imgurURL);
                 };
