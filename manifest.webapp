@@ -1,14 +1,14 @@
 {
-  "name": "IMGUR Screenshots",
-  "description": "Send a screenshot to IMGUR.",
+  "name": "IMGUR Camera",
+  "description": "Send photos from the camera to IMGUR.",
   "developer": {
-    "name": "Adrian Crespo, Giovanny Gongora"
+    "name": "Adrian Crespo"
   },
   "package_path": "package.zip",
   "role": "addon",
   "type": "certified",
   "customizations": [{
-    "filter": "system.gaiamobile.org",
+    "filter": "camera.gaiamobile.org",
     "css": [],
     "scripts": ["imgur.js"]
   }],
