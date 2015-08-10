@@ -19,8 +19,8 @@
 
             this._started = true;
 
-            window.addEventListener('newimage', this); //https://github.com/mozilla-b2g/gaia/blob/0cc109495bf06060e66f993255ab8a23fcfe347b/apps/camera/js/lib/camera/camera.js#L782
-            //window.addEventListener('mozChromeEvent', this);
+            console.log("IMGUR before adding the event");
+            window.app.camera.on('newimage', function(){ alert("FUNCIONA")});
         },
 
         /**
