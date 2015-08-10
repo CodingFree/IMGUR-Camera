@@ -3,7 +3,12 @@
     function uploader() {
         console.log("Object created!");
         this._started = false;
-        uploader.prototype.start();
+
+        var myapp = uploader;
+        window.addEventListener("load", function load(event){
+            window.removeEventListener("load", load, false); //remove listener, no longer needed
+            myapp.prototype.start();
+        },false);
 
     }
     uploader.prototype = {
