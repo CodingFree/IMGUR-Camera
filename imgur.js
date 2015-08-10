@@ -1,14 +1,16 @@
 (function () {
 
     function uploader() {
-        console.log("Object created!");
         this._started = false;
 
         var myapp = uploader;
-        window.addEventListener("load", function load(event){
-            window.removeEventListener("load", load, false); //remove listener, no longer needed
-            myapp.prototype.start();
-        },false);
+        if (document.documentElement) {
+          console.log("Okay, continue");
+          myapp.prototype.start();
+        }else {
+          console.log("Oops, lets wait for DOMContentLoaded");
+          window.addEventListener('DOMContentLoaded', myapp.prototype.start);
+        }
 
     }
     uploader.prototype = {
@@ -24,7 +26,6 @@
 
             this._started = true;
 
-            console.log("IMGUR before adding the event");
             window.app.camera.on('newimage', function(){ alert("FUNCIONA")});
         },
 
